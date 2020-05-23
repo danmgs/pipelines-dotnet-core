@@ -17,14 +17,22 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: NuGetCommand@2
+  displayName: 'NuGet Pack'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
 
 - task: NuGetCommand@2
+  displayName: 'NuGet Publish'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '78da3039-265c-4140-bac4-f7ce5a6ed6af'
+
+
+
