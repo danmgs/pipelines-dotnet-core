@@ -27,12 +27,9 @@ steps:
     patchVersion: '0'
 
 - task: NuGetCommand@2
-  displayName: 'NuGet Publish'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: '78da3039-265c-4140-bac4-f7ce5a6ed6af'
-
-
-
+    publishVstsFeed: '78f8d2ad-3311-4e07-bdd4-0085b7546a41/dd4a8be8-ce40-4b5e-89cf-0ad84a560977'
+    
